@@ -15,3 +15,7 @@ a {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+#row1:nth-child(3) {
+  background: red !important;
+}

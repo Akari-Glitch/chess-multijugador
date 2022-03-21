@@ -1,69 +1,41 @@
-export const whitePieces = ["♙", "♖", "♘", "♗", "♔", "♕", "♗", "♘", "♖", "♙"];
+export const whitePieces = ["♙", "♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖", "♙"];
 export const blackPieces = ["♟", "♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜", "♟"];
+export const letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
+export const lettersReverse = ["h", "g", "f", "e", "d", "c", "b", "a"];
 
-export const idBoxes = [
-  "box1",
-  "box2",
-  "box3",
-  "box4",
-  "box5",
-  "box6",
-  "box7",
-  "box8",
-  "box9",
-  "box10",
-  "box11",
-  "box12",
-  "box13",
-  "box14",
-  "box15",
-  "box16",
-  "box17",
-  "box18",
-  "box19",
-  "box20",
-  "box21",
-  "box22",
-  "box23",
-  "box24",
-  "box25",
-  "box26",
-  "box27",
-  "box28",
-  "box29",
-  "box30",
-  "box31",
-  "box32",
-  "box33",
-  "box34",
-  "box35",
-  "box36",
-  "box37",
-  "box38",
-  "box39",
-  "box40",
-  "box41",
-  "box42",
-  "box43",
-  "box44",
-  "box45",
-  "box46",
-  "box47",
-  "box48",
-  "box49",
-  "box50",
-  "box51",
-  "box52",
-  "box53",
-  "box54",
-  "box55",
-  "box56",
-  "box57",
-  "box58",
-  "box59",
-  "box60",
-  "box61",
-  "box62",
-  "box63",
-  "box64",
-];
+export function setTableBoxes(colorPlayer) {
+  let idBoxes = [[], [], [], [], [], [], [], []];
+  let count = colorPlayer ? 1 : 64;
+  let color = false;
+
+  for (let j = 0; j <= 7; j++) {
+    color = !color;
+
+    for (let i = 0; i <= 7; i++) {
+      idBoxes[j].push({
+        id: "box" + count,
+        color: color === true ? "boxW" : "boxB",
+        content: "",
+      });
+
+      colorPlayer ? count++ : count--;
+      color = !color;
+    }
+  }
+
+  for (let i = 0; i <= 7; i++) {
+    if (colorPlayer) {
+      idBoxes[7][i].content = whitePieces[i + 1];
+      idBoxes[6][i].content = whitePieces[0];
+      idBoxes[0][i].content = blackPieces[8 - i];
+      idBoxes[1][i].content = blackPieces[0];
+    } else {
+      idBoxes[7][i].content = blackPieces[i + 1];
+      idBoxes[6][i].content = blackPieces[0];
+      idBoxes[0][i].content = whitePieces[8 - i];
+      idBoxes[1][i].content = whitePieces[0];
+    }
+  }
+
+  return idBoxes;
+}

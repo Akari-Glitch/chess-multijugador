@@ -1,12 +1,16 @@
 import Content from "./components/Content.jsx";
-import Table from "./components/play/table/Table.jsx";
 import { HomeStyles } from "../styles/HomeStyles";
+import SelectColor from "./components/play/chess/SelectColor.jsx";
+import Table from "./components/play/chess/table/Table";
+import { ChessProvider } from "./context/chess-context";
 function Home() {
   return (
     <Content>
-      <HomeStyles>
-        <Table></Table>
-      </HomeStyles>
+      <ChessProvider>
+        <HomeStyles>
+          <SelectColor></SelectColor>
+        </HomeStyles>
+      </ChessProvider>
     </Content>
   );
 }

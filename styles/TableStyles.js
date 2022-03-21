@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const TableStyles = styled.table`
   border-spacing: 0;
   user-select: none;
+
   td {
     width: 40px;
     height: 40px;
@@ -15,19 +16,21 @@ export const TableStyles = styled.table`
     cursor: pointer;
   }
 
-  .corner-right-top {
-    border-top-right-radius: 10px;
-  }
-  .corner-left-top {
+  #row1:second-child {
     border-top-left-radius: 10px;
+    background: red;
   }
 
-  .corner-right-bottom {
-    border-bottom-right-radius: 10px;
+  #row1:last-child {
+    border-top-right-radius: 10px;
   }
-  .corner-left-bottom {
+  #row8:second-child {
     border-bottom-left-radius: 10px;
   }
+  #row8:last-child {
+    border-bottom-right-radius: 10px;
+  }
+
   .rowNumber {
     text-align: center;
   }
